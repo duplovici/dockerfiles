@@ -3,17 +3,18 @@
 FROM pritunl/archlinux
 
 # variables
-ENV APP="[app name]" 
-
-# create a non-root user to run the app
-RUN useradd -mrU http 
+ENV APP="[app name]"
 
 # install git, nginx, and node.js
 RUN pacman -S git nginx node npm --noconfirm
 
 # install source
-RUN chown http:http /srv/http
-RUN git clone git://10.200.4.201/"${APP}".git /home/"${USER}"/"${APP}"
-RUN cd /home/"$USER"/"${APP}" && sudo -u "${USER}" npm install
+RUN git clone git://10.200.4.201/"${APP}".git /srv/http/"${APP}"
+RUN cd /srv/http/"${APP}" && npm install
+RUN chown -R http:http /srv/http
 
+# copy over nginx.conf
 
+# enable/start nginx
+RUN systemctl enable nginx
+RUN systemctl start nginx
