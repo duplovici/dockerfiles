@@ -18,3 +18,6 @@ RUN chown -R http:http /srv/http
 # enable/start nginx
 RUN systemctl enable nginx
 RUN systemctl start nginx
+
+# create container with default command npm start
+CMD cd /srv/http/"${APP}" && sudo -u http npm start
