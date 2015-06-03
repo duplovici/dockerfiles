@@ -14,6 +14,8 @@ RUN cd /srv/http/"${APP}" && npm install
 RUN chown -R http:http /srv/http
 
 # copy over nginx.conf
+RUN rm /etc/nginx/nginx.conf
+ADD nginx.conf /etc/nginx/nginx.conf
 
 # enable/start nginx
 RUN systemctl enable nginx
