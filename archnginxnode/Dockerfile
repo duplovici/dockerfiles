@@ -6,7 +6,7 @@ FROM pritunl/archlinux
 ENV APP="[app name]"
 
 # install git, nginx, and node.js
-RUN pacman -S sudo git nginx nodejs npm --noconfirm
+RUN pacman -S systemd sudo git nginx nodejs npm --noconfirm
 
 # install source
 RUN git clone git://10.200.4.201/"${APP}".git /srv/http/"${APP}"
