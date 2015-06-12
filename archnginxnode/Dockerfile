@@ -3,13 +3,13 @@
 FROM pritunl/archlinux
 
 # variables
-ENV APP="[app name]"
+ENV APP="[app name]" REPO="[repo url]"
 
 # install git, nginx, and node.js
 RUN pacman -S sudo git nginx nodejs npm --noconfirm
 
 # install source
-RUN git clone git://10.200.4.201/"${APP}".git /srv/http/"${APP}"
+RUN git clone git://"${REPO}"/"${APP}".git /srv/http/"${APP}"
 RUN cd /srv/http/"${APP}" && npm install
 RUN chown -R http:http /srv/http
 
