@@ -18,4 +18,4 @@ RUN rm /etc/nginx/nginx.conf
 ADD nginx.conf /etc/nginx/nginx.conf
 
 # create container with default command npm start
-CMD sudo -u http nginx && cd /srv/http/"${APP}" && sudo -u http npm start
+CMD /usr/bin/nginx && cd /srv/http/"${APP}" && sudo -u http npm start
