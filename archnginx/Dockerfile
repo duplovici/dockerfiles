@@ -5,7 +5,7 @@ FROM pritunl/archlinux
 # variables i.e. APP=docker-demo REPO=github.com/ndarwincorn
 ENV APP="[app name]" REPO="[repo url]"
 
-# install git, nginx, and node.js
+# install git and nginx
 RUN pacman -S sudo git nginx --noconfirm
 
 # install source
